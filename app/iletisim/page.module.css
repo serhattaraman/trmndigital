@@ -1,0 +1,44 @@
+.grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 48px; align-items: start; }
+.info { display: flex; flex-direction: column; gap: 20px; }
+.infoCards { display: flex; flex-direction: column; gap: 12px; }
+.infoCard {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 24px;
+  transition: all var(--transition); cursor: pointer;
+}
+.infoCard:hover { border-color: var(--border-accent); box-shadow: var(--shadow-accent); }
+.infoIcon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--accent-glow); border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+}
+.infoLabel { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
+.infoValue { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 2px; }
+.infoNote { font-size: 12px; color: var(--text-muted); }
+.promiseBox {
+  background: var(--bg-card); border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg); padding: 24px;
+}
+.promiseBox h3 { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+.promise {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13.5px; color: var(--text-secondary); padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.promise:last-child { border-bottom: none; }
+.promise svg { color: var(--success); flex-shrink: 0; }
+.formWrap {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 40px;
+}
+.formTitle { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 28px; }
+.form { display: flex; flex-direction: column; gap: 20px; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.formNote { font-size: 12px; color: var(--text-muted); text-align: center; }
+.formNote a { color: var(--accent); }
+
+@media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .formWrap { padding: 24px 16px; } .formRow { grid-template-columns: 1fr; } }

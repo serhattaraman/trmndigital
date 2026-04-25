@@ -1,0 +1,84 @@
+.section { position: relative; background: var(--bg-secondary); }
+.bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(239,68,68,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.header { margin-bottom: 48px; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 48px; }
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition);
+}
+.card:hover { border-color: var(--border-accent); box-shadow: var(--shadow-accent); }
+
+.problemSide, .solutionSide {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.problemSide { background: rgba(239,68,68,0.03); border-right: 1px solid var(--border); }
+.solutionSide { background: rgba(16,185,129,0.03); }
+
+.sideLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.2);
+  color: #FCA5A5;
+  padding: 4px 8px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.painText { font-size: 14px; color: var(--text-primary); font-weight: 600; line-height: 1.5; flex: 1; }
+.fixText { font-size: 14px; color: var(--text-primary); font-weight: 600; line-height: 1.5; flex: 1; }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid;
+  width: fit-content;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  background: var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.midCTA {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-xl);
+  padding: 28px 40px;
+}
+.midCTAText { font-size: 1.05rem; font-weight: 600; color: var(--text-primary); max-width: 480px; }
+.midCTABtns { display: flex; gap: 12px; flex-shrink: 0; }
+
+@media (max-width: 960px) { .grid { grid-template-columns: 1fr; } .midCTA { flex-direction: column; align-items: flex-start; padding: 24px; } }
+@media (max-width: 640px) { .card { grid-template-columns: 1fr; } .arrow { transform: rotate(90deg); padding: 8px; } .problemSide { border-right: none; border-bottom: 1px solid var(--border); } .midCTABtns { flex-direction: column; width: 100%; } }

@@ -1,0 +1,50 @@
+.section { background: var(--bg-secondary); }
+.header { margin-bottom: 48px; }
+.grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+
+/* Comparison */
+.comparison { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; }
+.compHead {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  padding: 14px 20px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;
+}
+.compRow {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  transition: background var(--transition);
+}
+.compRow:last-child { border-bottom: none; }
+.compRow:hover { background: var(--bg-elevated); }
+.compAspect { font-size: 13px; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 2px; }
+.compNote { font-size: 11px; color: var(--text-muted); }
+.compCell { display: flex; justify-content: center; }
+.yes { color: var(--success); }
+.no { color: #EF4444; }
+
+/* Strengths */
+.strengths { display: flex; flex-direction: column; gap: 16px; }
+.strengthCard {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 24px;
+  transition: all var(--transition);
+}
+.strengthCard:hover { border-color: var(--border-accent); }
+.checkIcon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+.strengthTitle { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+.strengthDesc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+.cta {
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(129,140,248,0.06));
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg); padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.cta p { font-size: 13.5px; color: var(--text-secondary); }
+
+@media (max-width: 1024px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .compHead span:nth-child(2) { display: none; } .compRow > div:nth-child(2) { display: none; } .compRow { grid-template-columns: 2fr 1fr; } .compHead { grid-template-columns: 2fr 1fr; } }

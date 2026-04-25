@@ -1,0 +1,66 @@
+.main { background: var(--bg-primary); }
+
+.hero {
+  position: relative;
+  padding: 160px 0 100px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.heroBg {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(59,130,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroContent { position: relative; z-index: 1; max-width: 840px; margin: 0 auto; }
+.heroLabel {
+  display: inline-block; padding: 6px 14px; background: rgba(59,130,246,0.1); border: 1px solid var(--border-accent);
+  color: var(--accent-light); font-size: 12px; font-weight: 700; border-radius: 100px; margin-bottom: 24px;
+}
+.heroTitle {
+  font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: var(--text-primary);
+  line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.02em;
+}
+.heroTitle span { color: var(--accent); }
+.heroDesc { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.6; }
+.heroCtas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+.heroTrust { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+
+.painGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.painCard { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 32px; }
+.painIcon { font-size: 24px; margin-bottom: 16px; }
+.painCard h3 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+.painCard p { font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; }
+
+.featuresSection { background: var(--bg-secondary); }
+.featureList { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.featureItem { display: flex; gap: 20px; }
+.featureIcon { width: 48px; height: 48px; background: var(--accent-glow); border: 1px solid var(--border-accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; }
+.featureItem h3 { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+.featureItem p { font-size: 14.5px; color: var(--text-secondary); line-height: 1.6; }
+
+.compBox {
+  display: flex; align-items: stretch; gap: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-2xl); overflow: hidden;
+}
+.compSide { flex: 1; padding: 48px; }
+.compCenter { width: 60px; background: var(--bg-secondary); border-left: 1px solid var(--border); border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 900; color: var(--text-muted); font-size: 20px; }
+.compSide h3 { font-size: 1.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 24px; }
+.compTitleAccent { color: var(--accent) !important; }
+.compSide ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.compSide li { font-size: 15px; color: var(--text-secondary); }
+
+.ctaCard {
+  background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(129,140,248,0.08));
+  border: 1px solid var(--border-accent); border-radius: var(--radius-2xl); padding: 64px; text-align: center;
+}
+.ctaCard h2 { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 16px; }
+.ctaCard p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 32px; }
+.ctaBtns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+  .painGrid, .featureList { grid-template-columns: 1fr; }
+  .compBox { flex-direction: column; }
+  .compCenter { width: 100%; height: 60px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); border-left: 0; border-right: 0; }
+  .ctaCard { padding: 40px 24px; }
+}

@@ -1,0 +1,19 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: #070B14;
+  color: #F1F5F9;
+  font-family: 'Inter', sans-serif;
+}
+
+.content {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+  background: #0D1220;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .content { margin-left: 0; }
+}

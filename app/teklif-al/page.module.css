@@ -1,0 +1,71 @@
+.main {
+  min-height: 100vh;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 0% 40%, rgba(59,130,246,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 100% 60%, rgba(129,140,248,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+.left { position: sticky; top: 100px; }
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 20px 0;
+}
+.title span {
+  background: linear-gradient(135deg, #3B82F6, #818CF8);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 28px; }
+.features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.feature { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary); }
+.featureIcon { color: var(--accent); flex-shrink: 0; }
+.orSep {
+  font-size: 12px; color: var(--text-muted);
+  text-align: center; position: relative; margin: 24px 0;
+}
+.orSep::before, .orSep::after {
+  content: ''; position: absolute;
+  top: 50%; width: 40%; height: 1px; background: var(--border);
+}
+.orSep::before { left: 0; }
+.orSep::after { right: 0; }
+.directCtas { display: flex; flex-direction: column; gap: 10px; }
+.formCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+}
+.formTitle { font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 28px; }
+.form { display: flex; flex-direction: column; gap: 20px; }
+.formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.submitBtn { width: 100%; justify-content: center; }
+.formNote { font-size: 12px; color: var(--text-muted); text-align: center; }
+.formNote a { color: var(--accent); }
+
+@media (max-width: 960px) {
+  .inner { grid-template-columns: 1fr; }
+  .left { position: static; }
+}
+@media (max-width: 640px) {
+  .formCard { padding: 24px 16px; }
+  .formRow { grid-template-columns: 1fr; }
+}

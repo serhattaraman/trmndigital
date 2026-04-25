@@ -1,0 +1,48 @@
+.uploader { display: flex; flex-direction: column; gap: 20px; }
+
+.dropzone {
+  border: 2px dashed rgba(255,255,255,0.1); border-radius: 12px;
+  padding: 40px 24px; text-align: center; cursor: pointer;
+  background: #0D1220; transition: all 0.2s;
+}
+.dropzone:hover { border-color: #EF4444; background: rgba(239,68,68,0.02); }
+
+.emptyState { display: flex; flex-direction: column; align-items: center; gap: 12px; color: #64748B; }
+.emptyState p { font-size: 14.5px; color: #F1F5F9; }
+.emptyState span { font-size: 13px; }
+
+.uploadingState { display: flex; flex-direction: column; align-items: center; gap: 12px; color: #EF4444; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+
+.imageCard {
+  position: relative; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden;
+  border: 2px solid transparent; background: #070B14;
+}
+.imageCard img { width: 100%; height: 100%; object-fit: cover; }
+.imageCard.isCover { border-color: #EF4444; }
+
+.imageActions {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  opacity: 0; transition: opacity 0.2s;
+}
+.imageCard:hover .imageActions { opacity: 1; }
+.imageCard.isCover .imageActions { opacity: 1; background: transparent; justify-content: flex-start; padding: 8px; }
+.imageCard.isCover .removeBtn { display: none; }
+
+.coverBtn {
+  display: flex; align-items: center; gap: 6px; background: #EF4444; color: white;
+  border: none; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  cursor: pointer;
+}
+.isCover .coverBtn { background: #EF4444; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+
+.removeBtn {
+  background: rgba(255,255,255,0.1); color: white; border: none;
+  width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.2s;
+}
+.removeBtn:hover { background: #DC2626; }
