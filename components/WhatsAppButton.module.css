@@ -1,7 +1,8 @@
 .btn {
   position: fixed;
   bottom: 28px;
-  right: 28px;
+  left: 28px;
+  right: auto;
   z-index: 900;
   width: 56px;
   height: 56px;
@@ -37,7 +38,8 @@
 
 .tooltip {
   position: absolute;
-  right: 68px;
+  left: 68px;
+  right: auto;
   background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-primary);
