@@ -1,18 +1,53 @@
-import type { Metadata } from 'next'
+'use client'
+import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import Link from 'next/link'
-import { Phone, Mail, MapPin, MessageCircle, Clock, CheckCircle2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Phone, Mail, MapPin, MessageCircle, Clock, CheckCircle2, Loader2 } from 'lucide-react'
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
-  title: 'İletişim | Serhat Taraman — Özel Yazılım Geliştirici Diyarbakır',
-  description: 'Özel yazılım, yönetim paneli veya web sitesi projeniz için iletişime geçin. Telefon, WhatsApp veya form aracılığıyla ulaşabilirsiniz.',
-  alternates: { canonical: 'https://trmndigital.com/iletisim' },
-}
-
 export default function IletisimPage() {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('ad_soyad'),
+      phone: formData.get('telefon'),
+      email: formData.get('eposta'),
+      service: formData.get('hizmet'),
+      description: formData.get('mesaj'),
+      source: 'İletişim Formu'
+    }
+
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        router.push('/tesekkurler')
+      } else {
+        const result = await response.json()
+        setError(result.error || 'Bir hata oluştu, lütfen tekrar deneyin.')
+      }
+    } catch (err) {
+      setError('Sistem hatası oluştu. Lütfen WhatsApp üzerinden ulaşın.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -21,14 +56,14 @@ export default function IletisimPage() {
           <div className="page-hero-bg" />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <nav className="breadcrumb">
-              <Link href="/">Ana Sayfa</Link>
+              <Link href="/">Anasayfa</Link>
               <span className="breadcrumb-sep">/</span>
               <span>İletişim</span>
             </nav>
             <div className="section-label">İletişim</div>
             <h1 className="section-title">Projenizi <span>Konuşalım</span></h1>
             <p className="section-desc">
-              Aklınızdaki projeyi anlatın. 24 saat içinde geri dönüş garantisi.
+              Aklınızdaki projeyi anlatın. 24 saat içinde geri dönüş garantisi veriyoruz.
             </p>
           </div>
         </div>
@@ -47,11 +82,11 @@ export default function IletisimPage() {
                       <div className={styles.infoNote}>Haf. içi 09:00–18:00</div>
                     </div>
                   </a>
-                  <a href="mailto:serhat_212048@hotmail.com" className={styles.infoCard}>
+                  <a href="mailto:info@trmndigital.com" className={styles.infoCard}>
                     <div className={styles.infoIcon}><Mail size={20} /></div>
                     <div>
                       <div className={styles.infoLabel}>E-posta</div>
-                      <div className={styles.infoValue}>serhat_212048@hotmail.com</div>
+                      <div className={styles.infoValue}>info@trmndigital.com</div>
                       <div className={styles.infoNote}>24 saat içinde yanıt</div>
                     </div>
                   </a>
@@ -69,14 +104,6 @@ export default function IletisimPage() {
                       <div className={styles.infoLabel}>Konum</div>
                       <div className={styles.infoValue}>Şeyh Şamil, Bağlar/Diyarbakır</div>
                       <div className={styles.infoNote}>Tüm Türkiye&apos;ye uzaktan hizmet</div>
-                    </div>
-                  </div>
-                  <div className={styles.infoCard}>
-                    <div className={styles.infoIcon}><Clock size={20} /></div>
-                    <div>
-                      <div className={styles.infoLabel}>Çalışma Saatleri</div>
-                      <div className={styles.infoValue}>Pzt — Cmt: 09:00–19:00</div>
-                      <div className={styles.infoNote}>Pazar: Randevu ile</div>
                     </div>
                   </div>
                 </div>
@@ -99,7 +126,7 @@ export default function IletisimPage() {
               {/* Contact Form */}
               <div className={styles.formWrap}>
                 <h2 className={styles.formTitle}>Mesaj Gönderin</h2>
-                <form className={styles.form} action="/tesekkurler" method="GET">
+                <form className={styles.form} onSubmit={handleSubmit}>
                   <input name="honeypot" type="text" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                   <div className={styles.formRow}>
                     <div className="form-group">
@@ -125,23 +152,24 @@ export default function IletisimPage() {
                     <label className="form-label" htmlFor="hizmet">İlgilendiğiniz Hizmet</label>
                     <select id="hizmet" name="hizmet" className="form-input">
                       <option value="">Hizmet seçin</option>
-                      <option>Kurumsal Web Sitesi</option>
+                      <option>Kurumsal Web Tasarım</option>
+                      <option>Google Ads Yönetimi</option>
                       <option>Özel Yönetim Paneli</option>
-                      <option>CRM / Aday Takip Sistemi</option>
-                      <option>Eğitim Yönetim Sistemi</option>
-                      <option>İş Takip & Raporlama</option>
+                      <option>CRM / ERP Sistemleri</option>
                       <option>Otomasyon & Entegrasyon</option>
-                      <option>Google Ads Landing Page</option>
                       <option>Bakım & Teknik Destek</option>
                       <option>Diğer / Bilmiyorum</option>
                     </select>
                   </div>
                   <div className="form-group">
                     <label className="form-label" htmlFor="mesaj">Proje Detayı *</label>
-                    <textarea id="mesaj" name="mesaj" className="form-input" placeholder="Projenizi kısaca anlatın. Ne tür bir sistem istiyorsunuz? Var olan bir sisteminiz var mı?" rows={5} required />
+                    <textarea id="mesaj" name="mesaj" className="form-input" placeholder="Projenizi kısaca anlatın. Ne tür bir sistem istiyorsunuz?" rows={5} required />
                   </div>
-                  <button type="submit" className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center' }}>
-                    Mesaj Gönder →
+
+                  {error && <p className={styles.error}>{error}</p>}
+
+                  <button type="submit" disabled={loading} className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center' }}>
+                    {loading ? <><Loader2 size={18} className="animate-spin" /> Gönderiliyor...</> : 'Mesaj Gönder →'}
                   </button>
                   <p className={styles.formNote}>
                     Form bilgileriniz yalnızca proje görüşmesi amacıyla kullanılır.

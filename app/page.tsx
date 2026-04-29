@@ -1,15 +1,31 @@
-import type { Metadata } from 'next'
+'use client'
+
+import React from 'react'
+import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import HeroSection from '@/components/home/HeroSection'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle2, Monitor, Code, Settings, Search } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Monitor, Code, Settings, Search, Layout, Cpu, Gem, Palette, Shield } from 'lucide-react'
 import styles from './page.module.css'
 
-export const metadata: Metadata = {
-  title: 'TRMN Digital | İşinizi Düzene Sokan Dijital Çözümler',
-  description: 'Web sitesi, yazılım ve otomasyon çözümlerini gereksiz karmaşa olmadan, işe yarar şekilde kuruyoruz.',
-  alternates: { canonical: 'https://trmndigital.com' },
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 }
+}
+
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: { 
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  },
+  viewport: { once: true }
 }
 
 export default function HomePage() {
@@ -17,160 +33,158 @@ export default function HomePage() {
     <>
       <Navbar />
       <main className={styles.main}>
-        {/* HERO */}
-        <section className={styles.hero}>
-          <div className="container">
-            <h1 className={styles.heroTitle}>Düzgün çalışan dijital sistemler kuruyoruz</h1>
-            <p className={styles.heroSubtitle}>
-              Web sitesi, yazılım ve otomasyon çözümlerini<br/>
-              gereksiz karmaşa olmadan, işe yarar şekilde kuruyoruz.
-            </p>
-            <div className={styles.heroButtons}>
-              <Link href="/teklif-al" className="btn btn-primary btn-lg">
-                👉 Projeni anlat
-              </Link>
-              <a href="https://wa.me/905445209804" target="_blank" rel="noreferrer" className="btn btn-outline btn-lg">
-                👉 WhatsApp’tan yaz
-              </a>
-            </div>
-          </div>
-        </section>
+        <HeroSection />
 
         {/* KISA GÜVEN BLOĞU */}
         <section className={styles.trustBlock}>
           <div className="container">
-            <div className={styles.trustList}>
-              <div className={styles.trustItem}><CheckCircle2 className={styles.trustIcon} /> Hızlı teslim</div>
-              <div className={styles.trustItem}><CheckCircle2 className={styles.trustIcon} /> Net iletişim</div>
-              <div className={styles.trustItem}><CheckCircle2 className={styles.trustIcon} /> Gerçekten çalışan sistemler</div>
-            </div>
+            <motion.div 
+              className={styles.trustList}
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
+              <motion.div variants={fadeInUp} className={styles.trustItem}><CheckCircle2 className={styles.trustIcon} /> Hızlı teslimat</motion.div>
+              <motion.div variants={fadeInUp} className={styles.trustItem}><CheckCircle2 className={styles.trustIcon} /> Kesintisiz iletişim</motion.div>
+              <motion.div variants={fadeInUp} className={styles.trustItem}><CheckCircle2 className={styles.trustIcon} /> Performans odaklı sistemler</motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* FARK BLOĞU */}
         <section className={styles.section}>
           <div className="container">
-            <div className={styles.centerBlock}>
-              <h2 className={styles.sectionTitle}>Her şeyi yapmayız.<br/>İşe yarayanı yaparız.</h2>
+            <motion.div 
+              className={styles.centerBlock}
+              {...fadeInUp}
+            >
+              <h2 className={styles.sectionTitle}>Sadece web sitesi değil,<br/><span>Dijital sistemler kuruyoruz.</span></h2>
               <div className={styles.sectionText}>
-                <p>Amacımız basit:</p>
-                <p>kurduğumuz sistem gerçekten çalışsın.</p>
+                <p>TRMN Digital olarak abartılı vaatler yerine,</p>
+                <p>işletmenize gerçekten değer katan çözümler üretiyoruz.</p>
                 <br/>
-                <p>Gösterişli ama boş işler yerine,</p>
-                <p>kullanılan ve sonuç veren çözümler kurarız.</p>
+                <p>Karmaşık süreçleri basitleştiriyor,</p>
+                <p>teknolojiyi işinizi büyütmek için kullanıyoruz.</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* HİZMETLER */}
         <section className={styles.sectionAlt}>
           <div className="container">
-            <h2 className={styles.sectionTitleCenter}>Ne yapıyoruz?</h2>
-            <div className={styles.servicesList} style={{ margin: '0 auto' }}>
-              <div className={styles.serviceItem}>
+            <motion.div {...fadeInUp} style={{ textAlign: 'center' }}>
+              <h2 className={styles.sectionTitleCenter}>Neler Yapıyoruz?</h2>
+            </motion.div>
+            
+            <motion.div 
+              className={styles.servicesList} 
+              style={{ margin: '0 auto' }}
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
+              <motion.div variants={fadeInUp} className={styles.serviceItem}>
                 <div className={styles.serviceIconWrap}><Monitor size={28} /></div>
                 <div>
-                  <h3 className={styles.serviceTitle}>💻 Web Sitesi</h3>
-                  <p className={styles.serviceDesc}>Müşteri getiren, sade ve hızlı web siteleri kuruyoruz.</p>
+                  <h3 className={styles.serviceTitle}>Kurumsal Web Tasarım</h3>
+                  <p className={styles.serviceDesc}>Markanızı dijitalde güçlü ve güvenilir gösteren, yüksek performanslı web siteleri.</p>
                 </div>
-              </div>
-              <div className={styles.serviceItem}>
-                <div className={styles.serviceIconWrap}><Code size={28} /></div>
-                <div>
-                  <h3 className={styles.serviceTitle}>⚙️ Özel Yazılım</h3>
-                  <p className={styles.serviceDesc}>İşine özel, gereksiz karmaşa olmayan sistemler geliştiriyoruz.</p>
-                </div>
-              </div>
-              <div className={styles.serviceItem}>
-                <div className={styles.serviceIconWrap}><Settings size={28} /></div>
-                <div>
-                  <h3 className={styles.serviceTitle}>🔄 Otomasyon</h3>
-                  <p className={styles.serviceDesc}>Tekrarlayan işleri azaltan, süreci hızlandıran çözümler kuruyoruz.</p>
-                </div>
-              </div>
-              <div className={styles.serviceItem}>
+              </motion.div>
+              <motion.div variants={fadeInUp} className={styles.serviceItem}>
                 <div className={styles.serviceIconWrap}><Search size={28} /></div>
                 <div>
-                  <h3 className={styles.serviceTitle}>📈 SEO</h3>
-                  <p className={styles.serviceDesc}>Sitenin bulunmasını sağlıyoruz. Görünmeyen site işe yaramaz.</p>
+                  <h3 className={styles.serviceTitle}>Google Ads Yönetimi</h3>
+                  <p className={styles.serviceDesc}>Reklam bütçenizi en verimli şekilde kullanarak, doğrudan satış ve dönüşüm odaklı kampanyalar.</p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+              <motion.div variants={fadeInUp} className={styles.serviceItem}>
+                <div className={styles.serviceIconWrap}><Code size={28} /></div>
+                <div>
+                  <h3 className={styles.serviceTitle}>Özel Yazılım Çözümleri</h3>
+                  <p className={styles.serviceDesc}>İşletmenize özel CRM, ERP ve yönetim panelleriyle süreçlerinizi dijitalleştiriyoruz.</p>
+                </div>
+              </motion.div>
+              <motion.div variants={fadeInUp} className={styles.serviceItem}>
+                <div className={styles.serviceIconWrap}><Settings size={28} /></div>
+                <div>
+                  <h3 className={styles.serviceTitle}>Otomasyon & Sistemler</h3>
+                  <p className={styles.serviceDesc}>Tekrarlayan işleri otomatiğe bağlayarak zaman ve maliyet tasarrufu sağlıyoruz.</p>
+                </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
-        {/* NASIL ÇALIŞIYORUZ */}
+        {/* TASARIM ÇEŞİTLİLİĞİ SECTİON */}
         <section className={styles.section}>
           <div className="container">
-            <h2 className={styles.sectionTitleCenter}>Nasıl ilerliyoruz?</h2>
-            <div className={styles.stepsGrid}>
-              <div className={styles.stepItem}>
-                <div className={styles.stepNum}>1️⃣</div>
-                <div className={styles.stepText}>İhtiyacı netleştiriyoruz</div>
-              </div>
-              <div className={styles.stepItem}>
-                <div className={styles.stepNum}>2️⃣</div>
-                <div className={styles.stepText}>Gereksiz olanı çıkarıyoruz</div>
-              </div>
-              <div className={styles.stepItem}>
-                <div className={styles.stepNum}>3️⃣</div>
-                <div className={styles.stepText}>Sistemi kuruyoruz</div>
-              </div>
-              <div className={styles.stepItem}>
-                <div className={styles.stepNum}>4️⃣</div>
-                <div className={styles.stepText}>Test edip teslim ediyoruz</div>
-              </div>
-            </div>
+            <motion.div {...fadeInUp} style={{ textAlign: 'center', marginBottom: 64 }}>
+              <h2 className={styles.sectionTitleCenter}>Her markaya aynı tasarımı değil,<br/><span>doğru dijital kimliği oluşturuyoruz</span></h2>
+              <p className={styles.sectionSub} style={{ maxWidth: 800, margin: '0 auto' }}>
+                TRMN Digital olarak sektörünüze, hedef kitlenize ve marka duruşunuza göre farklı tasarım dilleri geliştiriyoruz. Markanızın dijitalde doğru görünmesini sağlıyoruz.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              className={styles.stepsGrid}
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+            >
+              {[
+                { icon: Shield, title: 'Kurumsal ve Güvenilir', desc: 'Ağırbaşlı, güven telkin eden ve profesyonel hatlar.' },
+                { icon: Layout, title: 'Modern ve Minimal', desc: 'Sade, kullanıcı dostu ve ferah arayüzler.' },
+                { icon: Cpu, title: 'Teknolojik ve Dinamik', desc: 'Yüksek enerjili, inovatif ve dikkat çekici yapılar.' },
+                { icon: Gem, title: 'Premium ve Dönüşüm Odaklı', desc: 'Lüks hissi veren, detaylara odaklı ve satış vizyonlu tasarımlar.' }
+              ].map(style => (
+                <motion.div key={style.title} variants={fadeInUp} className={styles.stepItem}>
+                  <div className={styles.stepNum} style={{ color: 'var(--accent)' }}><style.icon size={40} /></div>
+                  <h3 style={{ marginBottom: 12, fontWeight: 700 }}>{style.title}</h3>
+                  <p style={{ fontSize: 14, color: 'var(--text-secondary)' }}>{style.desc}</p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
         {/* PROJE BLOĞU */}
         <section className={styles.sectionAlt}>
           <div className="container">
-            <div className={styles.centerBlock}>
-              <h2 className={styles.sectionTitle} style={{ marginBottom: '16px' }}>Yaptığımız işler</h2>
-              <p className={styles.sectionSub}>Abartmadan. Olduğu gibi.</p>
+            <motion.div 
+              className={styles.centerBlock}
+              {...fadeInUp}
+            >
+              <h2 className={styles.sectionTitle} style={{ marginBottom: '16px' }}>Başarı Hikayelerimiz</h2>
+              <p className={styles.sectionSub}>Geliştirdiğimiz projelerle markaların dijitaldeki gücüne güç katıyoruz.</p>
               
               <div className={styles.projectsWrapper}>
                 <Link href="/projeler" className={styles.projectsLink}>
-                  👉 Projelerimizi incele <ArrowRight className={styles.inlineIcon} />
+                  👉 Tüm projelerimizi inceleyin <ArrowRight className={styles.inlineIcon} />
                 </Link>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* YORUMLAR */}
-        <section className={styles.section}>
-          <div className="container">
-            <h2 className={styles.sectionTitleCenter}>Bizimle çalışanlar ne diyor</h2>
-            <div className={styles.testimonialsGrid}>
-              <div className={styles.testimonialItem}>
-                <p>“İşimiz daha düzenli hale geldi.”</p>
-              </div>
-              <div className={styles.testimonialItem}>
-                <p>“Site gerçekten işe yaradı.”</p>
-              </div>
-              <div className={styles.testimonialItem}>
-                <p>“Süreç beklediğimizden daha hızlı ilerledi.”</p>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* KAPANIŞ */}
         <section className={styles.ctaSection}>
           <div className="container">
-            <div className={styles.ctaBox}>
-              <h2 className={styles.ctaTitle}>İşini düzgün kurmak istiyorsan doğru yerdesin</h2>
+            <motion.div 
+              className={styles.ctaBox}
+              {...fadeInUp}
+            >
+              <h2 className={styles.ctaTitle}>Dijital dönüşümünüzü<br/>birlikte başlatalım</h2>
               <p className={styles.ctaText}>
-                Gereksiz karmaşa olmadan, çalışan bir sistem istiyorsan konuşalım.
+                İşinizi büyütmek için ihtiyaç duyduğunuz sistemi profesyonel bir ekiple kurmak istiyorsanız hemen bizimle iletişime geçin.
               </p>
               <Link href="/teklif-al" className="btn btn-primary btn-lg">
-                👉 Başlayalım
+                👉 Ücretsiz Teklif Alın
               </Link>
-            </div>
+            </motion.div>
           </div>
         </section>
 

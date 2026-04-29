@@ -1,0 +1,183 @@
+.heroContent {
+  max-width: 850px;
+}
+
+.heroBtns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.importanceHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.importanceText {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.packagesHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.packageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+.packageCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  transition: all var(--transition);
+}
+
+.packageCard:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.packageCard.highlight {
+  border: 2px solid var(--accent);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+.packageTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.packageDesc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  min-height: 48px;
+}
+
+.featureListWrap {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.featureIcon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.packageFooter {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.packageNote {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.packageBtn {
+  width: 100%;
+  justify-content: center;
+}
+
+.finalCtaBox {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  padding: 64px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.finalCtaGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.finalCtaIcon {
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.finalCtaText {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.finalCtaBtns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .packageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .packageCard.highlight {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .packageGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .finalCtaBox {
+    padding: 48px 20px;
+  }
+}

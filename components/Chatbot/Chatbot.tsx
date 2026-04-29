@@ -139,23 +139,47 @@ export default function Chatbot() {
 
     if (!data.full_name || !data.phone) return
 
-    const finalLead = { ...leadData, ...data, source: 'chatbot' }
+    const finalLead = { ...leadData, ...data, source: 'Chatbot' }
     addMessage('user', `Adım: ${data.full_name}, Tel: ${data.phone}`)
     
     setIsTyping(true)
     
     try {
-      const { error } = await supabase.from('leads').insert([finalLead])
-      if (error) throw error
-      
-      console.log('Lead saved successfully:', finalLead)
+      // 1. Save to Supabase (Existing logic)
+      await supabase.from('leads').insert([{
+        full_name: data.full_name,
+        phone: data.phone,
+        email: data.email,
+        project_type: leadData.project_type,
+        project_description: leadData.project_description,
+        project_goal: leadData.project_goal,
+        budget_range: leadData.budget_range,
+        start_time: leadData.start_time,
+        source: 'Chatbot'
+      }])
+
+      // 2. Send to Telegram via our new API
+      await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.full_name,
+          phone: data.phone,
+          email: data.email,
+          service: leadData.project_type,
+          budget: leadData.budget_range,
+          description: leadData.project_description,
+          timeline: leadData.start_time,
+          source: 'Chatbot'
+        }),
+      })
       
       setIsTyping(false)
       addMessage('bot', (
         <div className={styles.finalMessage}>
-          <p>Teşekkürler. Bilgilerinizi aldık. Projenizi inceleyip size en uygun çözüm ve tahmini fiyat aralığı ile dönüş yapacağız.</p>
+          <p>Talebiniz alındı! Projenizi ekibimizle birlikte inceleyip size en kısa sürede dönüş yapacağız.</p>
           <a 
-            href={`https://wa.me/905384714674?text=Merhaba%2C%20chatbot%20üzerinden%20bilgi%20bıraktım.%20Adım%3A%20${data.full_name}`} 
+            href={`https://wa.me/905384714674?text=Merhaba%2C%20chatbot%20üzerinden%20teklif%20talebi%20bıraktım.%20Adım%3A%20${data.full_name}`} 
             target="_blank" 
             rel="noreferrer" 
             className={styles.waBtn}

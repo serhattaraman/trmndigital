@@ -1,150 +1,147 @@
+'use client'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { ArrowRight, MessageCircle, Phone, CheckCircle2 } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { 
+  Play, RefreshCw, Download, User, Database, 
+  Send, Zap, RotateCcw, Mail, Globe, 
+  Monitor, Activity, ShieldCheck, Rocket,
+  ArrowRight
+} from 'lucide-react'
 import styles from './HeroSection.module.css'
+import ParticleBackground from './ParticleBackground'
 
-const headlines = [
-  { problem: 'Excel ile takip yapmayı bırakın.', solution: 'İşletmenizi tek ekrandan yönetin.' },
-]
-
-const benefits = [
-  { icon: '⏱', text: 'Haftalar içinde kullanıma hazır' },
-  { icon: '🎯', text: 'Tam sizin iş akışınıza göre' },
-  { icon: '📊', text: 'Anlık raporlar, sıfır kayıp' },
+const terminalLogs = [
+  { time: '10:42:15', text: 'Sistem başlatıldı', Icon: Play, color: '#10B981' },
+  { time: '10:42:16', text: 'Bağlantı kontrolü yapıldı', Icon: RefreshCw, color: '#3B82F6' },
+  { time: '10:42:17', text: 'Form verileri alındı', Icon: Download, color: '#F59E0B' },
+  { time: '10:42:18', text: 'Müşteri kaydı oluşturuldu', Icon: User, color: '#8B5CF6' },
+  { time: '10:42:19', text: 'Veritabanına kaydedildi', Icon: Database, color: '#10B981' },
+  { time: '10:42:20', text: 'Telegram bildirimi gönderildi', Icon: Send, color: '#0EA5E9' },
+  { time: '10:42:21', text: 'Otomasyon tetiklendi', Icon: Zap, color: '#EF4444' },
+  { time: '10:42:22', text: 'İşlemler senkronize edildi', Icon: RotateCcw, color: '#F59E0B' },
+  { time: '10:42:23', text: 'E-posta bildirimi gönderildi', Icon: Mail, color: '#F97316' },
+  { time: '10:42:24', text: 'API isteği başarıyla tamamlandı', Icon: Globe, color: '#3B82F6' },
+  { time: '10:42:25', text: 'Sunucu durumu: AKTİF', Icon: Monitor, color: '#10B981' },
+  { time: '10:42:26', text: 'Sistem kaynakları kontrol edildi', Icon: Activity, color: '#8B5CF6' },
+  { time: '10:42:27', text: 'Yedekleme tamamlandı', Icon: ShieldCheck, color: '#10B981' },
+  { time: '10:42:28', text: 'Proje yayına alındı', Icon: Rocket, color: '#EF4444' },
 ]
 
 export default function HeroSection() {
+  const [visibleLogs, setVisibleLogs] = useState<typeof terminalLogs>([])
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisibleLogs(prev => {
+        const next = [...prev, terminalLogs[currentIndex]]
+        if (next.length > 13) next.shift()
+        return next
+      })
+      setCurrentIndex(prev => (prev + 1) % terminalLogs.length)
+    }, 1500)
+
+    return () => clearInterval(interval)
+  }, [currentIndex])
+
   return (
     <section className={styles.hero}>
-      <div className={styles.bgEffects}>
-        <div className={`${styles.orb} ${styles.orb1}`} />
-        <div className={`${styles.orb} ${styles.orb2}`} />
-        <div className={styles.grid} />
+      <ParticleBackground />
+      
+      <div className={styles.bgGlows}>
+        <div className={styles.glowRed} />
+        <div className={styles.glowNavy} />
       </div>
 
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.content}>
-            {/* Problem badge */}
-            <div className={styles.problemBadge}>
-              <span className={styles.badgeDot} />
-              Dağınık sistemler, kayıp veriler, kontrolsüz süreçler?
-            </div>
+            <motion.h1 
+              className={styles.headline}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Dijital varlığınızı<br />
+              <span className={styles.accent}>Güçlendiriyoruz</span>
+            </motion.h1>
 
-            {/* Headline — problem first */}
-            <h1 className={styles.headline}>
-              Excel ile zaman<br />
-              <span className={styles.strike}>kaybetmeyi bırakın.</span><br />
-              <span className={styles.accent}>İşinizi tek panelden yönetin.</span>
-            </h1>
+            <motion.p 
+              className={styles.sub}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              TRMN Digital olarak işletmeler için güven veren, hızlı çalışan ve sonuç odaklı 
+              web siteleri, dijital sistemler ve otomasyon çözümleri geliştiriyoruz.
+            </motion.p>
 
-            <p className={styles.sub}>
-              İşletmenize özel <strong>Yönetim Paneli, CRM ve İş Takip Sistemleri</strong> geliştiriyorum.
-              Dağınık süreçleri tek merkezde toplayın, kontrolü elinize alın.
-            </p>
-
-            {/* Benefits row */}
-            <div className={styles.benefits}>
-              {benefits.map(b => (
-                <div key={b.text} className={styles.benefit}>
-                  <span className={styles.benefitIcon}>{b.icon}</span>
-                  <span>{b.text}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div className={styles.ctas}>
-              <Link href="/teklif-al" className={`btn btn-primary btn-lg ${styles.ctaPrimary}`}>
-                Hemen Sistemini Planla <ArrowRight size={18} />
+            <motion.div 
+              className={styles.ctas}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Link href="/hizmetler" className={`${styles.btnPrimary} btn btn-lg`}>
+                Hizmetlerimiz <ArrowRight size={18} />
               </Link>
-              <a
-                href="https://wa.me/905384714674?text=Merhaba%2C%20i%C5%9Fletmem%20i%C3%A7in%20bir%20sistem%20geli%C5%9Ftirmek%20istiyorum.%20Bilgi%20alabilir%20miyim%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`btn btn-whatsapp btn-lg`}
-              >
-                <MessageCircle size={18} /> WhatsApp&apos;tan Yaz
-              </a>
-            </div>
-
-            {/* Social proof micro */}
-            <div className={styles.microProof}>
-              <div className={styles.avatars}>
-                {['MA', 'FÇ', 'AK', 'YD'].map(a => (
-                  <div key={a} className={styles.avatar}>{a}</div>
-                ))}
-              </div>
-              <p>
-                <strong>30+ işletme</strong> sistemlerini bana emanet etti.
-                <Link href="/projeler" className={styles.proofLink}> Projelere bak →</Link>
-              </p>
-            </div>
+              <Link href="/projeler" className={`${styles.btnSecondary} btn btn-lg`}>
+                Projelerimizi İnceleyin <ArrowRight size={18} />
+              </Link>
+            </motion.div>
           </div>
 
-          {/* Dashboard mockup */}
-          <div className={styles.visual}>
-            <div className={styles.dashboardMock}>
-              <div className={styles.mockBar}>
-                <div className={styles.mockDots}><span /><span /><span /></div>
-                <div className={styles.mockTitle}>panel.işletmeniz.com</div>
-                <div className={styles.mockLive}>● Canlı</div>
-              </div>
-              <div className={styles.mockContent}>
-                <div className={styles.mockStats}>
-                  {[
-                    { label: 'Toplam Başvuru', value: '1,248', change: '+12%', color: '#3B82F6' },
-                    { label: 'Bu Hafta', value: '84', change: '+5%', color: '#10B981' },
-                    { label: 'Tamamlanan', value: '964', change: '+8%', color: '#8B5CF6' },
-                  ].map(s => (
-                    <div key={s.label} className={styles.statCard}>
-                      <div className={styles.statLabel}>{s.label}</div>
-                      <div className={styles.statValue} style={{ color: s.color }}>{s.value}</div>
-                      <div className={styles.statChange}>{s.change} bu ay</div>
-                    </div>
-                  ))}
+          <motion.div 
+            className={styles.visual}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className={styles.terminal}>
+              <div className={styles.terminalHeader}>
+                <div className={styles.dots}>
+                  <span className={styles.dotRed} />
+                  <span className={styles.dotYellow} />
+                  <span className={styles.dotGreen} />
                 </div>
-                <div className={styles.mockChart}>
-                  <div className={styles.chartTitle}>Haftalık Aktivite</div>
-                  <div className={styles.bars}>
-                    {[65, 82, 58, 91, 76, 88, 95].map((h, i) => (
-                      <div key={i} className={styles.barWrap}>
-                        <div className={styles.bar} style={{ height: `${h}%` }} />
-                      </div>
-                    ))}
-                  </div>
-                  <div className={styles.chartDays}>
-                    {['Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt', 'Paz'].map(d => (
-                      <span key={d}>{d}</span>
-                    ))}
-                  </div>
-                </div>
-                <div className={styles.mockTable}>
-                  <div className={styles.tableHead}>
-                    <span>Ad Soyad</span><span>Durum</span><span>Tarih</span>
-                  </div>
-                  {[
-                    { name: 'Ahmet Yılmaz', status: 'Onaylandı', statusC: '#10B981', date: 'Bugün' },
-                    { name: 'Zeynep Kaya', status: 'İncelemede', statusC: '#F59E0B', date: 'Dün' },
-                    { name: 'Murat Demir', status: 'Beklemede', statusC: '#64748B', date: '2 gün' },
-                  ].map(r => (
-                    <div key={r.name} className={styles.tableRow}>
-                      <span>{r.name}</span>
-                      <span style={{ color: r.statusC, fontWeight: 600 }}>{r.status}</span>
-                      <span>{r.date}</span>
-                    </div>
-                  ))}
-                </div>
-                {/* Notification */}
-                <div className={styles.notification}>
-                  <CheckCircle2 size={14} className={styles.notifIcon} />
-                  <span>Yeni başvuru otomatik sisteme eklendi</span>
-                  <span className={styles.notifTime}>az önce</span>
+                <div className={styles.terminalTitle}>trmn-system — terminal</div>
+                <div className={styles.liveBadge}>
+                  <span className={styles.liveDot} />
+                  CANLI
                 </div>
               </div>
+              
+              <div className={styles.terminalBody}>
+                <div className={styles.logContainer}>
+                  <AnimatePresence mode="popLayout">
+                    {visibleLogs.map((log, i) => (
+                      <motion.div 
+                        key={`${log.time}-${i}`}
+                        layout
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.3 }}
+                        className={styles.logLine}
+                      >
+                        <span className={styles.logTime}>[{log.time}]</span>
+                        <log.Icon size={14} style={{ color: log.color, flexShrink: 0 }} />
+                        <span className={styles.logText}>{log.text}</span>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                </div>
+                
+                <div className={styles.promptLine}>
+                  <span className={styles.promptText}>trmn@system:~$</span>
+                  <span className={styles.cursor} />
+                </div>
+              </div>
+              
+              <div className={styles.terminalGlow} />
             </div>
-            <div className={styles.floatBadge1}>✅ Hazır tema yok — sıfırdan özel</div>
-            <div className={styles.floatBadge2}>🔒 Verileriniz tamamen güvende</div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

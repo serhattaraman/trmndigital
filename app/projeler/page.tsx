@@ -42,11 +42,11 @@ export default async function ProjelerPage() {
             <div className={styles.heroContent}>
               <div className="section-label">Portföy & Başarı Hikayeleri</div>
               <h1 className={styles.heroTitle}>
-                Geliştirdiğim <span>Sistemler</span><br />ve Projeler
+                Geliştirdiğimiz <span>Projeler</span><br />ve Sistemler
               </h1>
               <p className={styles.heroDesc}>
-                Her proje, gerçek bir işletmenin gerçek sorununa özel çözüm olarak geliştirildi.
-                Siz de işletmenize özel sistem kurabilirsiniz.
+                Her proje, gerçek bir işletmenin gerçek sorununa özel çözüm olarak ekibimiz tarafından geliştirildi.
+                Siz de işletmenize özel sistemlerimizi tercih edebilirsiniz.
               </p>
               <div className={styles.heroCtas}>
                 <a href="https://wa.me/905384714674?text=Merhaba%2C%20portf%C3%B6y%C3%BC%20inceledim.%20Benim%20i%C5%9Fletmem%20i%C3%A7in%20de%20benzer%20bir%20sistem%20istiyorum." target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">

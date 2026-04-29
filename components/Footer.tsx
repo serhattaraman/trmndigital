@@ -4,18 +4,18 @@ import styles from './Footer.module.css'
 import Image from 'next/image'
 
 const services = [
-  { label: 'Kurumsal Web Sitesi', href: '/hizmetler/kurumsal-web-sitesi' },
-  { label: 'Özel Yönetim Paneli', href: '/hizmetler/yonetim-paneli' },
-  { label: 'İş Takip & Raporlama', href: '/hizmetler/is-takip-raporlama' },
-  { label: 'CRM & Operasyon Paneli', href: '/hizmetler/crm-operasyon' },
-  { label: 'Eğitim Yönetim Sistemi', href: '/hizmetler/egitim-yonetim' },
-  { label: 'Otomasyon & Entegrasyon', href: '/hizmetler/otomasyon' },
+  { label: 'Kurumsal Web Tasarım', href: '/kurumsal-web-tasarim' },
+  { label: 'Google Ads Yönetimi', href: '/google-ads' },
+  { label: 'Özel Yazılım Çözümleri', href: '/hizmetler/ozel-yazilim' },
+  { label: 'CRM & ERP Sistemleri', href: '/hizmetler/crm-erp' },
+  { label: 'Süreç Otomasyonları', href: '/hizmetler/otomasyon' },
+  { label: 'İş Takip & Raporlama', href: '/hizmetler/is-takip' },
 ]
 
 const quickLinks = [
-  { label: 'Hakkımda', href: '/hakkimda' },
-  { label: 'Projeler', href: '/projeler' },
-  { label: 'Süreç Nasıl İşliyor', href: '/surec' },
+  { label: 'Hakkımızda', href: '/hakkimizda' },
+  { label: 'Projelerimiz', href: '/projeler' },
+  { label: 'Çalışma Sürecimiz', href: '/surec' },
   { label: 'Sık Sorulan Sorular', href: '/sss' },
   { label: 'Blog', href: '/blog' },
   { label: 'Teklif Al', href: '/teklif-al' },
@@ -36,33 +36,33 @@ export default function Footer() {
               <Link href="/" className={styles.logo}>
                 <Image 
                   src="/logo.png" 
-                  alt="TRMN Dijital" 
+                  alt="TRMN Digital" 
                   width={140} 
                   height={40} 
                   className={styles.logoImg} 
                 />
               </Link>
               <p className={styles.brandDesc}>
-                İşletmenizin dijital altyapısını sıfırdan, ihtiyacınıza özel olarak geliştiriyorum. Hazır tema değil, gerçek sistem.
+                İşletmenizin dijital altyapısını uçtan uca, ihtiyacınıza özel olarak geliştiriyoruz. Hazır kalıplar değil, performansa dayalı gerçek dijital sistemler inşa ediyoruz.
               </p>
               <div className={styles.contact}>
                 <a href="tel:+905384714674" className={styles.contactItem}>
                   <Phone size={15} /> <span>+90 538 471 46 74</span>
                 </a>
-                <a href="mailto:serhat_212048@hotmail.com" className={styles.contactItem}>
-                  <Mail size={15} /> <span>serhat_212048@hotmail.com</span>
+                <a href="mailto:info@trmndigital.com" className={styles.contactItem}>
+                  <Mail size={15} /> <span>info@trmndigital.com</span>
                 </a>
                 <a href="https://wa.me/905384714674" target="_blank" rel="noopener noreferrer" className={styles.contactItem}>
                   <MessageCircle size={15} /> <span>WhatsApp ile Yaz</span>
                 </a>
                 <div className={styles.contactItem}>
-                  <MapPin size={15} /> <span>TRMN Dijital, Şeyh Şamil, 21080 Bağlar/Diyarbakır</span>
+                  <MapPin size={15} /> <span>TRMN Digital, Şeyh Şamil, 21080 Bağlar/Diyarbakır</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <h4 className={styles.colTitle}>Hizmetler</h4>
+              <h4 className={styles.colTitle}>Hizmetlerimiz</h4>
               <ul className={styles.linkList}>
                 {services.map(s => (
                   <li key={s.href}>
@@ -89,7 +89,7 @@ export default function Footer() {
 
             <div>
               <h4 className={styles.colTitle}>Proje Başlatalım</h4>
-              <p className={styles.ctaText}>Aklınızdaki projeyi birlikte değerlendirelim. İlk görüşme ücretsizdir.</p>
+              <p className={styles.ctaText}>Aklınızdaki projeyi ekibimizle birlikte değerlendirelim. İlk görüşme ücretsizdir.</p>
               <Link href="/teklif-al" className={`btn btn-primary ${styles.footerCta}`}>
                 Ücretsiz Keşif Görüşmesi
               </Link>
@@ -104,7 +104,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <div className="container">
           <div className={styles.bottomInner}>
-            <p className={styles.copy}>© {new Date().getFullYear()} Serhat Taraman — TRMN Dijital. Tüm hakları saklıdır.</p>
+            <p className={styles.copy}>© 2024 - 2026 TRMN Digital. Tüm hakları saklıdır.</p>
             <div className={styles.legal}>
               {legal.map(l => (
                 <Link key={l.href} href={l.href} className={styles.legalLink}>{l.label}</Link>

@@ -1,39 +1,49 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown, Code2 } from 'lucide-react'
 import styles from './Navbar.module.css'
 import ThemeToggle from './ThemeToggle'
 import Image from 'next/image'
 
 const navLinks = [
-  { label: 'Hizmetler', href: '/hizmetler', hasDropdown: true,
+  { label: 'Anasayfa', href: '/' },
+  { label: 'Hakkımızda', href: '/hakkimizda' },
+  { 
+    label: 'Hizmetler', 
+    href: '/hizmetler', 
+    hasDropdown: true,
     children: [
-      { label: 'İş Takip Sistemi (Yeni)', href: '/is-takip-sistemi' },
-      { label: 'Kurumsal Web Sitesi', href: '/kurumsal-web-sitesi' },
-      { label: 'Özel Yönetim Paneli', href: '/hizmetler/yonetim-paneli' },
-      { label: 'CRM & Operasyon Paneli', href: '/hizmetler/crm-operasyon' },
-      { label: 'Eğitim Yönetim Sistemi', href: '/hizmetler/egitim-yonetim' },
+      { label: 'Kurumsal Web Tasarım', href: '/kurumsal-web-tasarim' },
+      { label: 'Google Ads Yönetimi', href: '/google-ads' },
+      { label: 'Özel Yazılım Çözümleri', href: '/hizmetler/ozel-yazilim' },
       { label: 'Otomasyon & Entegrasyon', href: '/hizmetler/otomasyon' },
+      { label: 'Sıkça Sorulan Sorular', href: '/sss' },
     ]
   },
-  { label: 'Projeler', href: '/projeler' },
-  { label: 'Hakkımda', href: '/hakkimda' },
-  { label: 'Süreç', href: '/surec' },
+  { label: 'Google Ads', href: '/google-ads' },
+  { label: 'Kurumsal Web Tasarım', href: '/kurumsal-web-tasarim' },
   { label: 'Blog', href: '/blog' },
-  { label: 'SSS', href: '/sss' },
+  { label: 'Süreç', href: '/surec' },
+  { label: 'Projelerimiz', href: '/projeler' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const isActive = (href: string) => pathname === href
+  const isChildActive = (children?: { href: string }[]) => 
+    children?.some(child => pathname === child.href)
 
   return (
     <>
@@ -56,13 +66,17 @@ export default function Navbar() {
                 <div key={link.label} className={styles.dropdownWrapper}
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}>
-                  <button className={styles.navLink}>
+                  <button className={`${styles.navLink} ${(isActive(link.href) || isChildActive(link.children)) ? styles.active : ''}`}>
                     {link.label} <ChevronDown size={14} className={dropdownOpen ? styles.chevronOpen : ''} />
                   </button>
                   {dropdownOpen && (
                     <div className={styles.dropdown}>
                       {link.children!.map(child => (
-                        <Link key={child.href} href={child.href} className={styles.dropdownItem}>
+                        <Link 
+                          key={child.href} 
+                          href={child.href} 
+                          className={`${styles.dropdownItem} ${isActive(child.href) ? styles.active : ''}`}
+                        >
                           {child.label}
                         </Link>
                       ))}
@@ -73,14 +87,20 @@ export default function Navbar() {
                   )}
                 </div>
               ) : (
-                <Link key={link.href} href={link.href} className={styles.navLink}>{link.label}</Link>
+                <Link 
+                  key={link.href} 
+                  href={link.href} 
+                  className={`${styles.navLink} ${isActive(link.href) ? styles.active : ''}`}
+                >
+                  {link.label}
+                </Link>
               ))}
             </div>
 
             <div className={styles.ctas}>
               <ThemeToggle />
-              <Link href="/iletisim" className="btn btn-ghost btn-sm">İletişim</Link>
-              <Link href="/teklif-al" className="btn btn-primary btn-sm">Teklif Al</Link>
+              <Link href="/iletisim" className={`btn btn-ghost btn-sm ${isActive('/iletisim') ? 'active' : ''}`}>İletişim</Link>
+              <Link href="/teklif-al" className={`btn btn-primary btn-sm ${isActive('/teklif-al') ? 'active' : ''}`}>Teklif Al</Link>
             </div>
 
             <button className={styles.hamburger} onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menü">
@@ -95,11 +115,20 @@ export default function Navbar() {
           <div className={styles.mobileLinks}>
             {navLinks.map(link => (
               <div key={link.label}>
-                <Link href={link.href} className={styles.mobileLink} onClick={() => setMobileOpen(false)}>
+                <Link 
+                  href={link.href} 
+                  className={`${styles.mobileLink} ${isActive(link.href) ? styles.active : ''}`} 
+                  onClick={() => setMobileOpen(false)}
+                >
                   {link.label}
                 </Link>
                 {link.hasDropdown && link.children?.map(child => (
-                  <Link key={child.href} href={child.href} className={styles.mobileSubLink} onClick={() => setMobileOpen(false)}>
+                  <Link 
+                    key={child.href} 
+                    href={child.href} 
+                    className={`${styles.mobileSubLink} ${isActive(child.href) ? styles.active : ''}`} 
+                    onClick={() => setMobileOpen(false)}
+                  >
                     {child.label}
                   </Link>
                 ))}

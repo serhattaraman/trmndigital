@@ -1,16 +1,12 @@
-import type { Metadata } from 'next'
+'use client'
+import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import Link from 'next/link'
-import { ArrowRight, MessageCircle, Shield, CheckCircle2, Clock, Zap } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { ArrowRight, MessageCircle, Shield, CheckCircle2, Clock, Zap, Loader2 } from 'lucide-react'
 import styles from './page.module.css'
-
-export const metadata: Metadata = {
-  title: 'Teklif Al — Projenizi Başlatalım | TRMN Dijital',
-  description: 'Özel yazılım, yönetim paneli veya web sitesi projeniz için ücretsiz teklif alın. 24 saat içinde detaylı proje planı ve fiyat teklifi.',
-  alternates: { canonical: 'https://trmndigital.com/teklif-al' },
-}
 
 const budgetOptions = [
   '5.000 — 10.000 ₺',
@@ -29,6 +25,47 @@ const timelineOptions = [
 ]
 
 export default function TeklifAlPage() {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('ad_soyad'),
+      phone: formData.get('telefon'),
+      email: formData.get('eposta'),
+      service: formData.get('hizmet'),
+      budget: formData.get('butce'),
+      description: formData.get('detay'),
+      timeline: formData.get('sure'),
+      source: 'Proje Başlat Formu'
+    }
+
+    try {
+      const response = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        router.push('/tesekkurler')
+      } else {
+        const result = await response.json()
+        setError(result.error || 'Bir hata oluştu, lütfen tekrar deneyin.')
+      }
+    } catch (err) {
+      setError('Sistem hatası oluştu. Lütfen WhatsApp üzerinden ulaşın.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -45,7 +82,7 @@ export default function TeklifAlPage() {
                 <span>Birlikte Başlatalım</span>
               </h1>
               <p className={styles.desc}>
-                Aklınızdaki sistemi anlatın. 24 saat içinde size özel detaylı bir proje değerlendirmesi ve fiyat teklifi hazırlıyorum.
+                Aklınızdaki sistemi anlatın. 24 saat içinde size özel detaylı bir proje değerlendirmesi ve fiyat teklifi hazırlıyoruz.
                 İlk görüşme tamamen ücretsiz, herhangi bir taahhüt gerektirmez.
               </p>
 
@@ -78,7 +115,7 @@ export default function TeklifAlPage() {
             {/* Right Column — Form */}
             <div className={styles.formCard}>
               <h2 className={styles.formTitle}>Proje Bilgilerini Paylaşın</h2>
-              <form className={styles.form} action="/tesekkurler" method="GET">
+              <form className={styles.form} onSubmit={handleSubmit}>
                 <input name="honeypot" type="text" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
                 <div className={styles.formRow}>
@@ -107,13 +144,13 @@ export default function TeklifAlPage() {
                   <label className="form-label" htmlFor="t-hizmet">Hizmet Türü *</label>
                   <select id="t-hizmet" name="hizmet" className="form-input" required>
                     <option value="">Hangi hizmete ihtiyacınız var?</option>
-                    <option>Kurumsal Web Sitesi</option>
+                    <option>Kurumsal Web Tasarım</option>
+                    <option>Google Ads Yönetimi</option>
                     <option>Özel Yönetim Paneli</option>
-                    <option>CRM / Aday Takip Sistemi</option>
+                    <option>CRM / ERP Sistemleri</option>
                     <option>Eğitim Yönetim Sistemi</option>
                     <option>İş Takip & Raporlama</option>
                     <option>Otomasyon & Entegrasyon</option>
-                    <option>Google Ads Landing Page</option>
                     <option>Bakım & Teknik Destek</option>
                     <option>Diğer / Birden Fazla</option>
                   </select>
@@ -142,8 +179,14 @@ export default function TeklifAlPage() {
                   </div>
                 </div>
 
-                <button type="submit" className={`btn btn-primary btn-lg ${styles.submitBtn}`}>
-                  Teklif Talep Et <ArrowRight size={18} />
+                {error && <p className={styles.error}>{error}</p>}
+
+                <button type="submit" disabled={loading} className={`btn btn-primary btn-lg ${styles.submitBtn}`}>
+                  {loading ? (
+                    <><Loader2 size={18} className="animate-spin" /> Gönderiliyor...</>
+                  ) : (
+                    <>{'Teklif Talep Et'} <ArrowRight size={18} /></>
+                  )}
                 </button>
 
                 <p className={styles.formNote}>

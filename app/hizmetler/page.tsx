@@ -14,64 +14,46 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    icon: Globe, href: '/hizmetler/kurumsal-web-sitesi', tag: 'Popüler',
-    title: 'Kurumsal Web Sitesi Geliştirme',
-    desc: 'Firmanızın dijital kimliğini temsil eden, SEO odaklı, hızlı ve güven veren profesyonel kurumsal siteler.',
-    features: ['SEO odaklı altyapı', 'Yönetim paneli', 'Mobil uyumlu', 'Hızlı yükleme', 'Google Ads uyumlu'],
+    icon: Globe, href: '/kurumsal-web-tasarim', tag: 'Popüler',
+    title: 'Kurumsal Web Tasarım',
+    desc: 'Markanızı dijitalde güçlü gösteren, hızlı, SEO odaklı ve modern kurumsal web çözümleri geliştiriyoruz.',
+    features: ['Modern arayüz tasarımı', 'SEO odaklı altyapı', 'Mobil uyumlu yapı', 'Hızlı yükleme süreleri', 'Yönetim paneli'],
   },
   {
-    icon: LayoutDashboard, href: '/hizmetler/yonetim-paneli', tag: 'En Çok Tercih',
-    title: 'Özel Yönetim Paneli Geliştirme',
-    desc: 'İşletmenizin tüm verilerini, süreçlerini ve ekibini tek ekrandan yönetebileceğiniz özel admin panelleri.',
-    features: ['Rol tabanlı yetkilendirme', 'Gerçek zamanlı veriler', 'Özel raporlar', 'Bildirim sistemi', 'Mobil uyumlu'],
+    icon: Target, href: '/google-ads', tag: 'Performans',
+    title: 'Google Ads Yönetimi',
+    desc: 'Reklam bütçenizi en verimli şekilde yöneterek, hedef kitlenize doğrudan ulaşmanızı ve dönüşüm almanızı sağlıyoruz.',
+    features: ['Anahtar kelime analizi', 'Rakip strateji takibi', 'Dönüşüm kurulumu', 'Haftalık raporlama', 'Bütçe optimizasyonu'],
   },
   {
-    icon: BarChart3, href: '/hizmetler/is-takip-raporlama', tag: null,
-    title: 'İş Takip & Raporlama Sistemleri',
-    desc: 'Operasyonel verilerinizi anlık izleyin, filtreleyin ve dışa aktarın. Kararları veriye dayalı alın.',
-    features: ['Gerçek zamanlı dashboard', 'Excel/PDF export', 'Tarihsel analiz', 'KPI takibi', 'Özel filtreler'],
+    icon: LayoutDashboard, href: '/hizmetler/ozel-yazilim', tag: 'En Çok Tercih',
+    title: 'Özel Yazılım Çözümleri',
+    desc: 'İşletmenizin ihtiyaçlarına özel, süreçlerinizi kolaylaştıran ve verimliliği artıran yazılım sistemleri inşa ediyoruz.',
+    features: ['Sıfırdan özel kodlama', 'Modüler mimari', 'Güvenli veritabanı', 'API entegrasyonları', 'Ölçeklenebilir yapı'],
   },
   {
-    icon: Users, href: '/hizmetler/crm-operasyon', tag: null,
-    title: 'CRM / Aday Takip / Operasyon Panelleri',
-    desc: 'Müşteri ilişkileri, satış süreci, aday takibi ve iş akışlarını tek çatı altında yöneten sistemler.',
-    features: ['Müşteri veritabanı', 'Durum takibi', 'Otomatik bildirim', 'Görev yönetimi', 'İletişim geçmişi'],
-  },
-  {
-    icon: GraduationCap, href: '/hizmetler/egitim-yonetim', tag: null,
-    title: 'Eğitim & Kurs Yönetim Sistemleri',
-    desc: 'Öğrenci, öğretmen, kurs ve hakediş yönetimini kapsayan, eğitim kurumlarına özel dijital platformlar.',
-    features: ['Öğrenci takibi', 'Devam yönetimi', 'Hakediş hesaplama', 'Veli bildirim', 'Online kayıt'],
-  },
-  {
-    icon: FileText, href: '/hizmetler/form-basvuru', tag: null,
-    title: 'Form, Başvuru & Veri Toplama',
-    desc: 'Başvuru, kayıt ve anket süreçlerinizi dijitalleştiren, verileri otomatik işleyen akıllı form sistemleri.',
-    features: ['Çok adımlı formlar', 'Dosya yükleme', 'Otomatik e-posta', 'Veri tabanlı kayıt', 'PDF çıktı'],
+    icon: Users, href: '/hizmetler/crm-erp', tag: null,
+    title: 'CRM & ERP Sistemleri',
+    desc: 'Müşteri ilişkileri ve kaynak yönetimini tek çatı altında toplayan, operasyonel hızı artıran platformlar geliştiriyoruz.',
+    features: ['Müşteri takip sistemi', 'Stok & süreç yönetimi', 'Teklif & fatura takibi', 'Ekip yetkilendirme', 'Özel raporlama'],
   },
   {
     icon: Zap, href: '/hizmetler/otomasyon', tag: null,
-    title: 'Otomasyon & Entegrasyon Çözümleri',
-    desc: 'Tekrarlayan iş süreçlerini otomatize edin. Farklı sistemleri birbirine entegre edin, zaman ve kaynak kazanın.',
-    features: ['API entegrasyonları', 'Otomatik raporlama', 'E-posta/SMS otomasyonu', 'Webhook yapıları', '3. taraf sistemler'],
+    title: 'Süreç Otomasyonları',
+    desc: 'Tekrarlayan ve zaman alan iş süreçlerinizi otomatiğe bağlayarak hata payını düşürüyor ve zaman tasarrufu sağlıyoruz.',
+    features: ['E-posta/SMS otomasyonu', 'Veri senkronizasyonu', 'İş akışı yönetimi', '3. taraf entegrasyonlar', 'Otomatik raporlama'],
   },
   {
-    icon: Target, href: '/hizmetler/landing-page', tag: null,
-    title: 'Google Ads Dönüşüm Odaklı Landing Page',
-    desc: 'Reklam trafiğini müşteriye çeviren, A/B test uyumlu, performans odaklı açılış sayfaları.',
-    features: ['Yüksek dönüşüm tasarımı', 'Hızlı yükleme', 'A/B test uyumlu', 'GA4 hazır', 'Form optimizasyonu'],
-  },
-  {
-    icon: Search, href: '/hizmetler/seo-tanitim', tag: null,
-    title: 'SEO Uyumlu Profesyonel Tanıtım Siteleri',
-    desc: 'Organik aramada üst sıralarda yer alan, yerel SEO\'ya uyumlu, kaliteli içerikli kurumsal siteler.',
-    features: ['Teknik SEO', 'İçerik stratejisi', 'Yerel SEO', 'Schema markup', 'Hız optimizasyonu'],
+    icon: BarChart3, href: '/hizmetler/is-takip', tag: null,
+    title: 'İş Takip & Raporlama',
+    desc: 'Operasyonel verilerinizi gerçek zamanlı takip eden ve karar almayı kolaylaştıran dijital dashboardlar sunuyoruz.',
+    features: ['Anlık veri izleme', 'Performans analizleri', 'Excel/PDF çıktıları', 'Görsel grafikler', 'KPI takibi'],
   },
   {
     icon: Settings, href: '/hizmetler/bakim-destek', tag: null,
-    title: 'Bakım, Güncelleme & Teknik Destek',
-    desc: 'Mevcut projenizin güvenliğini, performansını ve güncelliğini koruyan düzenli bakım hizmetleri.',
-    features: ['Güvenlik güncellemeleri', 'Performans izleme', 'Yedekleme', 'Hata giderme', 'Yeni özellik'],
+    title: 'Bakım & Teknik Destek',
+    desc: 'Projelerinizin güvenliğini, performansını ve güncelliğini korumak için düzenli teknik destek ve bakım sağlıyoruz.',
+    features: ['Güvenlik güncellemeleri', 'Performans izleme', 'Düzenli yedekleme', 'Hızlı hata giderme', 'Sürekli iyileştirme'],
   },
 ]
 
@@ -84,17 +66,16 @@ export default function HizmetlerPage() {
           <div className="page-hero-bg" />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <nav className="breadcrumb">
-              <Link href="/">Ana Sayfa</Link>
+              <Link href="/">Anasayfa</Link>
               <span className="breadcrumb-sep">/</span>
               <span>Hizmetler</span>
             </nav>
-            <div className="section-label">Hizmetler</div>
+            <div className="section-label">Hizmetlerimiz</div>
             <h1 className="section-title" style={{ maxWidth: 700 }}>
-              İşletmenizin İhtiyacına Göre<br /><span>Özel Yazılım Çözümleri</span>
+              İşletmenizin İhtiyacına Göre<br /><span>Özel Dijital Sistemler</span>
             </h1>
             <p className="section-desc" style={{ maxWidth: 640 }}>
-              Hazır şablonlar değil, gerçek sistem geliştirme. Her hizmet, işletmenizin
-              operasyonel ihtiyaçlarına ve büyüme hedeflerine göre kurgulanır.
+              TRMN Digital olarak hazır şablonlar yerine, işletmenizin operasyonel ihtiyaçlarına ve büyüme hedeflerine özel olarak kurgulanmış profesyonel sistemler geliştiriyoruz.
             </p>
           </div>
         </div>
@@ -126,13 +107,13 @@ export default function HizmetlerPage() {
 
             <div className={styles.ctaBox}>
               <h2>Hangi Hizmete İhtiyacınız Olduğundan Emin Değil misiniz?</h2>
-              <p>Projenizi anlatın, size en uygun çözümü birlikte belirleyelim. İlk görüşme tamamen ücretsiz.</p>
+              <p>Projenizi anlatın, size en uygun stratejiyi birlikte belirleyelim. İlk görüşme tamamen ücretsizdir.</p>
               <div className={styles.ctaBtns}>
                 <Link href="/teklif-al" className="btn btn-primary btn-lg">
-                  Ücretsiz Danışma Al <ArrowRight size={18} />
+                  Ücretsiz Danışmanlık Alın <ArrowRight size={18} />
                 </Link>
-                <a href="https://wa.me/905XXXXXXXXX" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
-                  WhatsApp ile Sor
+                <a href="https://wa.me/905384714674" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+                  <MessageCircle size={20} /> WhatsApp ile Sorun
                 </a>
               </div>
             </div>
