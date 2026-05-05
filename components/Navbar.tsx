@@ -103,6 +103,10 @@ export default function Navbar() {
               <Link href="/teklif-al" className={`btn btn-primary btn-sm ${isActive('/teklif-al') ? 'active' : ''}`}>Teklif Al</Link>
             </div>
 
+            {/* Mobilde hamburger yanında her zaman görünür toggle */}
+            <div className={styles.mobileThemeWrap}>
+              <ThemeToggle />
+            </div>
             <button className={styles.hamburger} onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menü">
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -134,6 +138,14 @@ export default function Navbar() {
                 ))}
               </div>
             ))}
+            {/* Tema geçişi — mobil menü içi */}
+            <div className={styles.mobileThemeRow}>
+              <span className={styles.mobileThemeLabel}>
+                Tema
+              </span>
+              <ThemeToggle />
+            </div>
+
             <div className={styles.mobileCtas}>
               <Link href="/iletisim" className="btn btn-outline" onClick={() => setMobileOpen(false)}>İletişim</Link>
               <Link href="/teklif-al" className="btn btn-primary" onClick={() => setMobileOpen(false)}>Teklif Al</Link>

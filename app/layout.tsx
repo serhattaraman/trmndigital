@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import Chatbot from '@/components/Chatbot/Chatbot'
+import StickyBar from '@/components/StickyBar'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://trmndigital.com'),
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ThemeProvider>
           {children}
+          <StickyBar />
           <Chatbot />
         </ThemeProvider>
       </body>

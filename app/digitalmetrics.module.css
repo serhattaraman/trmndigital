@@ -1,0 +1,463 @@
+/* ──────────────────────────────────────────────────────────
+   TRMN Digital — Digital Metrics Section Styles
+   Gece & Gündüz modlarıyla uyumlu
+   ────────────────────────────────────────────────────────── */
+
+.section {
+  padding: 120px 0;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.title span {
+  color: var(--accent);
+}
+
+.sub {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Grid ─────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Card header ──────────────────────────────────────────── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.cardIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.cardSub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.liveDot {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #10B981;
+}
+
+.livePulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+/* ── Chart ────────────────────────────────────────────────── */
+.chartWrap {
+  margin-bottom: 20px;
+}
+
+.chartLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.chartUp {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #10B981;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 80px;
+  padding: 0 2px;
+}
+
+.chartBar {
+  flex: 1;
+  background: linear-gradient(to top, var(--accent), rgba(239, 68, 68, 0.3));
+  border-radius: 3px 3px 0 0;
+  min-height: 4px;
+  transition: background 0.3s ease;
+}
+
+[data-theme="light"] .chartBar {
+  background: linear-gradient(to top, #DC2626, rgba(220, 38, 38, 0.25));
+}
+
+.chartMonths {
+  display: flex;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.chartMonths span {
+  flex: 1;
+  text-align: center;
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+/* ── SEO Table ────────────────────────────────────────────── */
+.tableWrap {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 60px 70px;
+  padding: 8px 14px;
+  background: var(--bg-elevated);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 60px 70px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+  align-items: center;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:hover {
+  background: var(--bg-elevated);
+}
+
+.keyword {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.keyword svg {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.pos {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.change {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #10B981;
+  justify-content: flex-end;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.cardFooter strong {
+  color: var(--text-primary);
+}
+
+/* ── Right Column ─────────────────────────────────────────── */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Ads Rows ─────────────────────────────────────────────── */
+.adRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+
+.adRow:last-child {
+  border-bottom: none;
+}
+
+.adName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 90px;
+}
+
+.adDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.adMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.adSpend {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.adConv {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #10B981;
+  font-weight: 600;
+}
+
+.adRoas {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* ── Stats Row ────────────────────────────────────────────── */
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 14px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.stat:hover {
+  border-color: var(--border-accent);
+}
+
+.statIcon {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.statVal {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.statLabel {
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ── CTA Pill ─────────────────────────────────────────────── */
+.ctaPill {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ctaPillText {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  min-width: 200px;
+}
+
+.ctaPillBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.ctaPillBtn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .adMeta {
+    gap: 8px;
+  }
+
+  .ctaPill {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chartMonths span:nth-child(odd) {
+    visibility: hidden;
+  }
+}

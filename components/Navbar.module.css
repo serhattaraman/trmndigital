@@ -186,7 +186,39 @@
   .hamburger { display: flex; align-items: center; justify-content: center; margin-left: auto; }
 }
 
+/* Mobilde hamburger yanında tema toggle */
+.mobileThemeWrap {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobileThemeWrap {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 8px;
+  }
+}
+
+/* Mobil menü içindeki tema satırı */
+.mobileThemeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  margin-bottom: 4px;
+}
+
+.mobileThemeLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
 @media (max-width: 480px) {
   .logoImg { height: 32px; }
-  .inner { gap: 16px; }
+  .inner { gap: 12px; }
 }
