@@ -3,12 +3,12 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import Link from 'next/link'
-import { Globe, LayoutDashboard, BarChart3, Users, GraduationCap, Zap, FileText, Target, Settings, Search, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { Globe, LayoutDashboard, BarChart3, Users, GraduationCap, Zap, FileText, Target, Settings, Search, ArrowRight, CheckCircle2, MessageCircle } from 'lucide-react'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'Hizmetler | Özel Yazılım, Yönetim Paneli, Kurumsal Web Sitesi',
-  description: 'Özel web yazılımı, yönetim paneli, CRM, iş takip sistemleri, eğitim yönetimi, otomasyon ve kurumsal web sitesi hizmetleri. Diyarbakır ve Türkiye geneli.',
+  description: 'Özel web yazılımı, yönetim paneli, CRM, iş takip sistemleri, eğitim yönetimi, otomasyon ve kurumsal web sitesi hizmetleri.',
   alternates: { canonical: 'https://trmndigital.com/hizmetler' },
 }
 

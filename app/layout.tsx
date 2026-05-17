@@ -1,32 +1,47 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import Chatbot from '@/components/Chatbot/Chatbot'
-import StickyBar from '@/components/StickyBar'
+import dynamic from 'next/dynamic'
+import { Inter, Syne } from 'next/font/google'
+const Chatbot = dynamic(() => import('@/components/Chatbot/Chatbot'), { ssr: false })
+const ExitIntentPopup = dynamic(() => import('@/components/ExitIntentPopup'), { ssr: false })
+const StickyBar = dynamic(() => import('@/components/StickyBar'), { ssr: false })
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+const syne = Syne({
+  subsets: ['latin'],
+  variable: '--font-syne',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://trmndigital.com'),
   title: {
-    default: 'Serhat Taraman | Özel Yazılım & Web Geliştirme — Diyarbakır',
-    template: '%s | TRMN Dijital',
+    default: 'TRMN Digital | Diyarbakır Yazılım Şirketi & Web Tasarım',
+    template: '%s | TRMN Digital',
   },
-  description: 'Diyarbakır merkezli özel yazılım geliştirici. Yönetim paneli, CRM, iş takip sistemleri, kurumsal web sitesi ve işletmeye özel dijital çözümler. Ücretsiz keşif görüşmesi için hemen iletişime geçin.',
-  keywords: ['özel yazılım geliştirme', 'web tasarım Diyarbakır', 'yönetim paneli', 'kurumsal web sitesi', 'CRM yazılım', 'iş takip sistemi', 'Diyarbakır yazılım', 'özel yazılım Türkiye'],
-  authors: [{ name: 'Serhat Taraman' }],
-  creator: 'Serhat Taraman',
+  description: 'Diyarbakır yazılım şirketi TRMN Digital; özel yazılım çözümleri, kurumsal web tasarımı, CRM ve otomasyon sistemleri sunar. İşletmenizi dijitalle büyütün.',
+  keywords: ['Diyarbakır yazılım şirketi', 'Diyarbakır web tasarım', 'Diyarbakır özel yazılım', 'kurumsal web sitesi Diyarbakır', 'Diyarbakır SEO ajansı', 'CRM yazılımı Diyarbakır', 'yazılım ajansı Türkiye'],
+  authors: [{ name: 'TRMN Digital' }],
+  creator: 'TRMN Digital',
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
     url: 'https://trmndigital.com',
-    siteName: 'TRMN Dijital — Serhat Taraman',
-    title: 'Serhat Taraman | Özel Yazılım & Web Geliştirme — Diyarbakır',
-    description: 'İşletmenize özel dijital sistemler geliştiriyorum. Yönetim paneli, CRM, raporlama sistemleri ve kurumsal web sitesi.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'TRMN Dijital — Serhat Taraman' }],
+    siteName: 'TRMN Digital',
+    title: 'TRMN Digital | Özel Yazılım & Dijital Çözümler',
+    description: 'İşletmenize özel dijital sistemler geliştiriyoruz. Yönetim paneli, CRM, raporlama sistemleri ve kurumsal web tasarımı.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'TRMN Digital' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Serhat Taraman | Özel Yazılım & Web Geliştirme',
-    description: 'İşletmenize özel dijital sistemler geliştiriyorum.',
+    title: 'TRMN Digital | Özel Yazılım & Dijital Çözümler',
+    description: 'İşletmenize özel dijital sistemler geliştiriyoruz.',
     images: ['/og-image.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
@@ -35,33 +50,33 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" suppressHydrationWarning>
+    <html lang="tr" className={`${inter.variable} ${syne.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "TRMN Dijital — Serhat Taraman",
-              "description": "Özel yazılım geliştirme, yönetim paneli, CRM ve kurumsal web sitesi hizmetleri",
+              "@type": "ProfessionalService",
+              "name": "TRMN Digital",
+              "description": "Diyarbakır merkezli özel yazılım geliştirme, yönetim paneli, CRM ve kurumsal web tasarımı ajansı.",
               "url": "https://trmndigital.com",
               "telephone": "+90-538-471-46-74",
-              "email": "serhat_212048@hotmail.com",
+              "email": "info@trmndigital.com",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Bağlar",
                 "addressRegion": "Diyarbakır",
-                "streetAddress": "Şeyh Şamil, 21080",
                 "addressCountry": "TR"
               },
-              "geo": { "@type": "GeoCoordinates", "latitude": 37.9144, "longitude": 40.2306 },
-              "areaServed": { "@type": "Country", "name": "Türkiye" },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 37.9144,
+                "longitude": 40.2306
+              },
+              "areaServed": ["Diyarbakır", "Türkiye"],
               "priceRange": "₺₺₺",
-              "serviceType": ["Web Geliştirme", "Özel Yazılım", "Yönetim Paneli", "CRM"],
+              "serviceType": ["Web Tasarım", "Özel Yazılım", "Yönetim Paneli", "CRM", "SEO"],
               "sameAs": []
             })
           }}
@@ -72,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <StickyBar />
           <Chatbot />
+          <ExitIntentPopup />
         </ThemeProvider>
       </body>
     </html>

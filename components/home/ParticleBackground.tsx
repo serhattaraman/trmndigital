@@ -12,6 +12,10 @@ export default function ParticleBackground() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    // Reduced motion check
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
+
     let animationFrameId: number
     let particles: Particle[] = []
     const particleCount = typeof window !== 'undefined' && window.innerWidth < 768 ? 40 : 100

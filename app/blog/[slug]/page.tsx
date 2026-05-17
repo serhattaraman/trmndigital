@@ -44,6 +44,44 @@ const posts: Record<string, { title: string; excerpt: string; category: string; 
       '## Maliyet Karşılaştırması',
       'Kısa vadede hazır sistem ucuzdur. Ancak uzun vadede özelleştirme maliyetleri, lisans ücretleri ve verimlilik kaybı hesaplandığında özel yazılım çok daha ekonomik çıkabilir.',
     ]
+  },
+  'diyarbakirdaki-isletmeler-icin-dijital-donusum-rehberi': {
+    title: 'Diyarbakır\'daki İşletmeler İçin Dijital Dönüşüm Rehberi',
+    excerpt: 'Diyarbakır\'da faaliyet gösteren KOBİ ve kurumsal firmalar için dijitalleşmenin yol haritası.',
+    category: 'Dijital Strateji',
+    date: '5 Mayıs 2025',
+    content: [
+      'Diyarbakır\'daki pek çok geleneksel işletme için dijitalleşme süreci genellikle kafa karıştırıcı olabilir. Ancak doğru adımlarla bu süreç, işletmenizin verimliliğini %40 oranında artırabilir.',
+      '## Neden Dijitalleşme?',
+      'Geleneksel yöntemlerle iş takibi yapmak, verilerin kaybolmasına ve zaman kaybına yol açar. Dijital dönüşüm; sadece bir web sitesine sahip olmak değil, iş süreçlerinizi yazılımlar aracılığıyla yönetmektir.',
+      '## Adım 1: Kurumsal Dijital Kimlik',
+      'İlk adım, profesyonel bir web sitesine sahip olmaktır. Müşterilerinizin size güvenmesi için dijital vitrininizin kusursuz olması gerekir.',
+      '## Adım 2: Süreçlerin Otomatikleştirilmesi',
+      'Tekrarlayan işleri (teklif hazırlama, müşteri takibi, stok yönetimi) özel bir yazılım veya CRM sistemi ile otomatik hale getirmek, ekibinize zaman kazandırır.',
+      '## Adım 3: Veri Odaklı Reklamcılık',
+      'Diyarbakır\'daki hedef kitlenize ulaşmak için Google Ads ve SEO stratejilerini birleştirerek, reklam bütçenizi en verimli şekilde kullanabilirsiniz.',
+      '## Sonuç',
+      'Diyarbakır\'da dijitalleşen firmalar, rakiplerinden çok daha hızlı büyüyor. Siz de geç kalmadan dönüşümü başlatın.',
+    ]
+  },
+  'web-tasarim-fiyatlarini-belirleyen-5-kritik-faktor': {
+    title: 'Web Tasarım Fiyatlarını Belirleyen 5 Kritik Faktör',
+    excerpt: 'Web tasarım maliyetlerini ve kalite farkını belirleyen detayları şeffaflıkla açıklıyoruz.',
+    category: 'Web Tasarım',
+    date: '3 Mayıs 2025',
+    content: [
+      'Web tasarım sektöründe fiyat yelpazesi oldukça geniştir. İşletme sahipleri genellikle "Neden bu kadar fark var?" diye sorar. İşte bu farkı yaratan 5 kritik faktör:',
+      '## 1. Hazır Tema vs. Özel Tasarım',
+      'Hazır temalar ucuzdur ancak yavaştır ve herkesle aynı görünür. Özel tasarım ise sadece sizin markanıza özel kurgulanır ve maksimum performans verir.',
+      '## 2. Teknik Altyapı ve SEO',
+      'Google\'da üst sıralarda çıkmanızı sağlayan teknik SEO altyapısı, sitenin fiyatını etkileyen en büyük gizli maliyettir. İyi bir altyapı, uzun vadede reklam bütçenizden tasarruf etmenizi sağlar.',
+      '## 3. Güvenlik ve Hız (Core Web Vitals)',
+      'Hızlı açılan ve güvenli bir site geliştirmek daha fazla mühendislik gerektirir. LCP ve CLS gibi performans metriklerinin optimize edilmesi uzmanlık ister.',
+      '## 4. Yönetim Paneli Esnekliği',
+      'Sitenizi kolayca güncelleyebileceğiniz, ihtiyaca göre şekillenebilen bir yönetim paneli (CMS), standart sistemlere göre daha değerlidir.',
+      '## 5. Satış Sonrası Destek ve Bakım',
+      'Siteniz yayına girdikten sonra teknik bir muhatap bulabilmek en büyük konfordur. Profesyonel ajanslar, bakım ve destek maliyetini tekliflerine dahil eder.',
+    ]
   }
 }
 

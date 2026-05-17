@@ -63,8 +63,8 @@ export default function HeroSection() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Dijital varlığınızı<br />
-              <span className={styles.accent}>Güçlendiriyoruz</span>
+              Global Standartlarda<br />
+              <span className={styles.accent}>Dijital Çözümler</span>
             </motion.h1>
 
             <motion.p 
@@ -73,8 +73,8 @@ export default function HeroSection() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              TRMN Digital olarak işletmeler için güven veren, hızlı çalışan ve sonuç odaklı 
-              web siteleri, dijital sistemler ve otomasyon çözümleri geliştiriyoruz.
+              TRMN Digital olarak Diyarbakır'daki işletmeler için dünya standartlarında web siteleri, 
+              özel yazılım sistemleri ve sonuç odaklı dijital stratejiler geliştiriyoruz.
             </motion.p>
 
             <motion.div 

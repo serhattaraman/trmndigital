@@ -101,9 +101,9 @@ export default function IletisimPage() {
                   <div className={styles.infoCard}>
                     <div className={styles.infoIcon}><MapPin size={20} /></div>
                     <div>
-                      <div className={styles.infoLabel}>Konum</div>
-                      <div className={styles.infoValue}>Şeyh Şamil, Bağlar/Diyarbakır</div>
-                      <div className={styles.infoNote}>Tüm Türkiye&apos;ye uzaktan hizmet</div>
+                      <div className={styles.infoLabel}>Merkez Ofis</div>
+                      <div className={styles.infoValue}>Bağlar, Diyarbakır</div>
+                      <div className={styles.infoNote}>Tüm Türkiye&apos;ye dijital hizmet</div>
                     </div>
                   </div>
                 </div>

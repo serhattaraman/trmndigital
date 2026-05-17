@@ -8,6 +8,7 @@ import {
   Globe, LayoutDashboard, FileText, Settings,
   CheckCircle2, Zap, Shield, FolderOpen, ZoomIn
 } from 'lucide-react'
+import Image from 'next/image'
 import styles from '@/app/projeler/page.module.css'
 import { Lightbox } from './Lightbox'
 
@@ -139,10 +140,14 @@ export function ProjectsClient({ initialProjects }: { initialProjects: any[] }) 
                     onClick={() => setSelectedProject({ ...project, Icon, color })}
                     style={{ cursor: 'pointer' }}
                   >
-                    {project.cover_image ? (
                       <div className={styles.cardImage}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={project.cover_image} alt={project.title} />
+                        <Image 
+                          src={project.cover_image} 
+                          alt={project.title} 
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: 'cover' }}
+                        />
                       </div>
                     ) : (
                       <div className={styles.cardAccent} style={{ background: color }} />
@@ -173,6 +178,9 @@ export function ProjectsClient({ initialProjects }: { initialProjects: any[] }) 
                       
                       <div className={styles.cardOverlay}>
                         <span>Detayları Gör <ExternalLink size={14} /></span>
+                        <Link href={`/projeler/${project.slug}`} className={styles.caseStudyLink} onClick={(e) => e.stopPropagation()}>
+                           Vaka Analizi <ArrowRight size={12} />
+                        </Link>
                       </div>
                     </div>
                   </motion.div>
@@ -251,8 +259,14 @@ export function ProjectsClient({ initialProjects }: { initialProjects: any[] }) 
                     className={styles.coverImageContainer}
                     onClick={() => openLightbox(0)}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={selectedProject.cover_image} alt={selectedProject.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                    <Image 
+                      src={selectedProject.cover_image} 
+                      alt={selectedProject.title} 
+                      width={1200} 
+                      height={675} 
+                      priority
+                      style={{ width: '100%', height: 'auto', display: 'block' }} 
+                    />
                     <div className={styles.imageOverlay}>
                       <ZoomIn size={32} />
                       <span>Büyüt</span>
@@ -337,8 +351,13 @@ export function ProjectsClient({ initialProjects }: { initialProjects: any[] }) 
                                   <div className={styles.screenDots}><span /><span /><span /></div>
                                 </div>
                                 <div className={styles.screenBody} style={{ padding: 0, height: 'auto', aspectRatio: '4/3', position: 'relative' }}>
-                                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                                  <img src={img.image_url} alt="Ekran" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                  <Image 
+                                    src={img.image_url} 
+                                    alt="Ekran" 
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 400px"
+                                    style={{ objectFit: 'cover' }}
+                                  />
                                   <div className={styles.imageOverlaySmall}>
                                     <ZoomIn size={24} />
                                   </div>
@@ -359,6 +378,9 @@ export function ProjectsClient({ initialProjects }: { initialProjects: any[] }) 
                   <a href={`https://wa.me/905384714674?text=Merhaba%2C%20${encodeURIComponent(selectedProject.title)}%20gibi%20bir%20sistem%20istiyorum.%20Konuşabilir%20miyiz?`} target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
                     <MessageCircle size={16} /> WhatsApp&apos;tan Yaz
                   </a>
+                  <Link href={`/projeler/${selectedProject.slug}`} className="btn btn-outline" onClick={() => setSelectedProject(null)}>
+                    Tam Vaka Analizi <ArrowRight size={16} />
+                  </Link>
                   <Link href="/teklif-al" className="btn btn-primary" onClick={() => setSelectedProject(null)}>
                     Bana Özel Teklif Al <ArrowRight size={16} />
                   </Link>

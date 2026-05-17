@@ -1,7 +1,8 @@
-'use client'
-import Link from 'next/link'
-import { ArrowRight, Clock, Tag } from 'lucide-react'
-import styles from './page.module.css'
+import React from 'react'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
+import BlogClient from '@/components/blog/BlogClient'
 
 const posts = [
   {
@@ -50,26 +51,42 @@ const posts = [
     featured: false,
   },
   {
-    slug: 'diyarbakir-web-site-yaptirirken-dogru-secim-nasil-yapilir',
-    title: 'Diyarbakır\'da Web Site Yaptırırken Doğru Seçim Nasıl Yapılır?',
-    excerpt: 'Diyarbakır\'da web tasarım hizmeti alırken nelere dikkat etmelisiniz? Yerel ve uzak hizmet sağlayıcılar arasında nasıl seçim yaparsınız?',
-    category: 'Diyarbakır Web Tasarım',
+    slug: 'diyarbakirdaki-isletmeler-icin-dijital-donusum-rehberi',
+    title: 'Diyarbakır\'daki İşletmeler İçin Dijital Dönüşüm Rehberi',
+    excerpt: 'Diyarbakır\'da faaliyet gösteren KOBİ ve kurumsal firmalar için dijitalleşmenin yol haritası. Nereden başlamalı? Hangi araçları kullanmalı?',
+    category: 'Dijital Strateji',
+    date: '5 Mayıs 2025',
+    readTime: '10 dk okuma',
+    featured: true,
+  },
+  {
+    slug: 'web-tasarim-fiyatlarini-belirleyen-5-kritik-faktor',
+    title: 'Web Tasarım Fiyatlarını Belirleyen 5 Kritik Faktör',
+    excerpt: 'Bir web sitesi neden 5.000 TL iken diğeri 50.000 TL? Maliyetleri ve kalite farkını belirleyen detayları şeffaflıkla açıklıyoruz.',
+    category: 'Web Tasarım',
+    date: '3 Mayıs 2025',
+    readTime: '6 dk okuma',
+    featured: false,
+  },
+  {
+    slug: 'dogru-web-tasarim-ajansi-nasil-secilir',
+    title: 'Doğru Web Tasarım Ajansı Nasıl Seçilir?',
+    excerpt: 'Web tasarım hizmeti alırken nelere dikkat etmelisiniz? Yerel ve global hizmet sağlayıcılar arasında nasıl seçim yaparsınız?',
+    category: 'Dijital Strateji',
     date: '8 Mart 2025',
     readTime: '7 dk okuma',
     featured: false,
   },
 ]
 
-const categories = ['Tümü', 'Web Tasarım', 'Özel Yazılım', 'SEO', 'Google Ads Landing Page', 'Diyarbakır Web Tasarım', 'İşletmeler için Dijital Çözümler', 'Kurumsal Web Sitesi']
+const categories = ['Tümü', 'Web Tasarım', 'Özel Yazılım', 'SEO', 'Google Ads Landing Page', 'Dijital Strateji', 'İşletmeler için Dijital Çözümler', 'Kurumsal Web Sitesi']
 
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import WhatsAppButton from '@/components/WhatsAppButton'
+export const metadata = {
+  title: 'Blog & Rehberler | TRMN Digital',
+  description: 'Web tasarımı, özel yazılım geliştirme ve dijital strateji üzerine uzman görüşleri ve rehberler.',
+}
 
 export default function BlogPage() {
-  const featured = posts.filter(p => p.featured)
-  const rest = posts.filter(p => !p.featured)
-
   return (
     <>
       <Navbar />
@@ -84,54 +101,7 @@ export default function BlogPage() {
         </div>
 
         <section className="section" style={{ paddingTop: 0 }}>
-          <div className="container">
-            <div className={styles.categories}>
-              {categories.map((c, i) => (
-                <span key={c} className={`${styles.catChip} ${i === 0 ? styles.catActive : ''}`}>{c}</span>
-              ))}
-            </div>
-
-            <div className={styles.featuredGrid}>
-              {featured.map(post => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.featuredCard}>
-                  <div className={styles.featuredImg}>
-                    <span>📝</span>
-                  </div>
-                  <div className={styles.cardBody}>
-                    <div className={styles.cardMeta}>
-                      <span className={styles.catBadge}>{post.category}</span>
-                      <span className={styles.featBadge}>ÖNE ÇIKAN</span>
-                    </div>
-                    <h2 className={styles.cardTitle}>{post.title}</h2>
-                    <p className={styles.cardExcerpt}>{post.excerpt}</p>
-                    <div className={styles.cardFooter}>
-                      <div className={styles.cardInfo}>
-                        <span><Clock size={12} />{post.readTime}</span>
-                        <span>{post.date}</span>
-                      </div>
-                      <span className={styles.readMore}>Okumaya Devam <ArrowRight size={13} /></span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            <div className={styles.postGrid}>
-              {rest.map(post => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className={styles.postCard}>
-                  <div className={styles.postCat}>
-                    <Tag size={12} /> {post.category}
-                  </div>
-                  <h2 className={styles.postTitle}>{post.title}</h2>
-                  <p className={styles.postExcerpt}>{post.excerpt}</p>
-                  <div className={styles.postInfo}>
-                    <span><Clock size={12} /> {post.readTime}</span>
-                    <span>{post.date}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <BlogClient posts={posts} categories={categories} />
         </section>
       </main>
       <Footer />

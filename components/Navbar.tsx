@@ -53,7 +53,7 @@ export default function Navbar() {
             <Link href="/" className={styles.logo}>
               <Image 
                 src="/logo.png" 
-                alt="TRMN Dijital" 
+                alt="TRMN Digital" 
                 width={120} 
                 height={32} 
                 className={styles.logoImg} 

@@ -26,6 +26,11 @@ const legal = [
   { label: 'KVKK & Çerez Politikası', href: '/kvkk' },
 ]
 
+const locations = [
+  { label: 'Diyarbakır Web Tasarım', href: '/diyarbakir-web-tasarim' },
+  { label: 'Diyarbakır Özel Yazılım', href: '/diyarbakir-ozel-yazilim' },
+]
+
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -56,7 +61,7 @@ export default function Footer() {
                   <MessageCircle size={15} /> <span>WhatsApp ile Yaz</span>
                 </a>
                 <div className={styles.contactItem}>
-                  <MapPin size={15} /> <span>TRMN Digital, Şeyh Şamil, 21080 Bağlar/Diyarbakır</span>
+                  <MapPin size={15} /> <span>TRMN Digital | Türkiye Geneli Dijital Hizmet</span>
                 </div>
               </div>
             </div>
@@ -78,6 +83,16 @@ export default function Footer() {
               <h4 className={styles.colTitle}>Hızlı Erişim</h4>
               <ul className={styles.linkList}>
                 {quickLinks.map(l => (
+                  <li key={l.href}>
+                    <Link href={l.href} className={styles.footerLink}>
+                      <ArrowRight size={12} /> {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <h4 className={styles.colTitle} style={{ marginTop: '24px' }}>Lokasyonlar</h4>
+              <ul className={styles.linkList}>
+                {locations.map(l => (
                   <li key={l.href}>
                     <Link href={l.href} className={styles.footerLink}>
                       <ArrowRight size={12} /> {l.label}
